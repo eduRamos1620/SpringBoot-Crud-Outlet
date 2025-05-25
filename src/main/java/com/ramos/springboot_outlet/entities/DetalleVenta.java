@@ -1,7 +1,6 @@
 package com.ramos.springboot_outlet.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,8 +14,13 @@ import java.math.BigDecimal;
 @Table(name = "detalle_venta")
 public class DetalleVenta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int cantidad;
+    @Column(name = "precio_unitarrio")
     private BigDecimal precioUnitario;
     private BigDecimal subtotal;
+
+
 }

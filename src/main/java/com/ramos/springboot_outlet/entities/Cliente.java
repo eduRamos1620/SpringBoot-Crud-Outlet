@@ -5,29 +5,26 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.Scanner;
+
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "usuarios")
-public class Usuario {
+@Table(name = "clientes")
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank
-    private String username;
     @NotBlank
     private String nombre;
     @NotBlank
-    @Column(name = "apellido_paterno")
-    private String apelldioPaterno;
-    @Column(name = "apellido_materno")
-    private String apellidoMaterno;
-    @NotBlank
+    private String apellidoPaterno;
+    private String apellidoMAterno;
     @Size(min = 10, max = 13)
     private String telefono;
+    private String genero;
 }
