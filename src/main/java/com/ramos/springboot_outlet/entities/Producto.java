@@ -28,4 +28,7 @@ public class Producto {
     private BigDecimal precio;
     private String categoria;
     private String genero;
+
+    @ManyToMany(targetEntity = Proveedor.class)
+    private Proveedor proveedor;
 }

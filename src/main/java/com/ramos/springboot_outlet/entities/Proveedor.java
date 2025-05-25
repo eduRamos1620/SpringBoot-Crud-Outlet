@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -25,4 +27,7 @@ public class Proveedor {
     @Size(min = 10, max = 13)
     private String telefono;
     private String email;
+
+    @OneToMany(targetEntity = Producto.class, fetch = FetchType.LAZY, mappedBy = "proveedor")
+    private List<Producto> productos;
 }
