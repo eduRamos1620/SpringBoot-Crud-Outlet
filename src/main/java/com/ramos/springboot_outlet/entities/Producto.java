@@ -20,6 +20,8 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
+    private String codigo;
+    @NotBlank
     private String nombre;
     private String descripcion;
     @NotNull
