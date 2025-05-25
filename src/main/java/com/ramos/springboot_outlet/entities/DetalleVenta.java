@@ -23,9 +23,15 @@ public class DetalleVenta {
     //private BigDecimal precioUnitario;
     private BigDecimal subtotal;
 
-    @OneToMany(targetEntity = Producto.class, fetch = FetchType.LAZY, mappedBy = "detalle_venta")
-    private List<Producto> productos;
+    //@OneToMany(targetEntity = Producto.class, fetch = FetchType.LAZY, mappedBy = "detalle_venta")
+    //private List<Producto> productos;
 
-    @ManyToOne(targetEntity = Venta.class)
-    private Venta venta;
+    @ManyToOne(targetEntity = Producto.class)
+    private Producto producto;
+
+    //@ManyToOne(targetEntity = Venta.class)
+    //private Venta venta;
+
+    @OneToMany(targetEntity = Venta.class, fetch = FetchType.LAZY, mappedBy = "detalle_venta")
+    private List<Venta> ventas;
 }

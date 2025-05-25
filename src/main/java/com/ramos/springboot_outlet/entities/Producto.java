@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Setter
 @Getter
@@ -29,9 +30,12 @@ public class Producto {
     private String categoria;
     private String genero;
 
-    @ManyToMany(targetEntity = Proveedor.class)
+    @ManyToOne(targetEntity = Proveedor.class)
     private Proveedor proveedor;
 
-    @ManyToOne(targetEntity = DetalleVenta.class)
-    private DetalleVenta detalle_venta;
+    //@ManyToOne(targetEntity = DetalleVenta.class)
+    //private DetalleVenta detalle_venta;
+
+    @OneToMany(targetEntity = DetalleVenta.class, fetch = FetchType.LAZY, mappedBy = "producto")
+    private List<DetalleVenta> detalleVentas;
 }

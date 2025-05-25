@@ -32,6 +32,9 @@ public class Venta {
     @ManyToOne(targetEntity = Cliente.class)
     private Cliente cliente;
 
-    @OneToMany(targetEntity = DetalleVenta.class, fetch = FetchType.LAZY, mappedBy = "venta")
-    private List<DetalleVenta> detalleVentas;
+    //@OneToMany(targetEntity = DetalleVenta.class, fetch = FetchType.LAZY, mappedBy = "venta")
+    //private List<DetalleVenta> detalleVentas;
+
+    @ManyToOne(targetEntity = DetalleVenta.class)
+    private DetalleVenta detalle_venta;
 }
