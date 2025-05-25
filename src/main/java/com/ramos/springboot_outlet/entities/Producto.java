@@ -31,4 +31,7 @@ public class Producto {
 
     @ManyToMany(targetEntity = Proveedor.class)
     private Proveedor proveedor;
+
+    @ManyToOne(targetEntity = DetalleVenta.class)
+    private DetalleVenta detalle_venta;
 }

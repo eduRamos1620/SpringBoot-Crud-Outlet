@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Setter
@@ -27,4 +28,7 @@ public class Cliente {
     @Size(min = 10, max = 13)
     private String telefono;
     private String genero;
+
+    @OneToMany(targetEntity = Venta.class, fetch = FetchType.LAZY, mappedBy = "cliente")
+    private List<Venta> ventas;
 }
