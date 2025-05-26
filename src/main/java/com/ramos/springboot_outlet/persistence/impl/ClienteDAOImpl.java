@@ -4,10 +4,12 @@ import com.ramos.springboot_outlet.entities.Cliente;
 import com.ramos.springboot_outlet.persistence.ICienteDAO;
 import com.ramos.springboot_outlet.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ClienteDAOImpl implements ICienteDAO {
 
     @Autowired
