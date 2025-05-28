@@ -23,8 +23,10 @@ public class Cliente {
     @NotBlank
     private String nombre;
     @NotBlank
+    @Column(name = "apellido_paterno")
     private String apellidoPaterno;
-    private String apellidoMAterno;
+    @Column(name = "apellido_materno")
+    private String apellidoMaterno;
     @Size(min = 10, max = 13)
     private String telefono;
     private String genero;
