@@ -60,7 +60,6 @@ public class ClienteController {
 
     @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDTO) throws URISyntaxException {
-        String genero = clienteDTO.getGenero();
 
         if (clienteDTO.getNombre().isBlank() && clienteDTO.getApellidoPaterno().isBlank() && clienteDTO.getTelefono().isBlank()){
                 return ResponseEntity.badRequest().build();
