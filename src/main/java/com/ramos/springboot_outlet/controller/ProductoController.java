@@ -3,6 +3,7 @@ package com.ramos.springboot_outlet.controller;
 import com.ramos.springboot_outlet.controller.dto.ProductoDTO;
 import com.ramos.springboot_outlet.entities.Producto;
 import com.ramos.springboot_outlet.service.IProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.Optional;
 @RequestMapping("/api/producto")
 public class ProductoController {
 
+    @Autowired
     private IProductoService service;
 
     @GetMapping("/buscar/{id}")
