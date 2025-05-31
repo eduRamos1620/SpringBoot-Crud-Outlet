@@ -28,7 +28,6 @@ public class Producto {
     @NotNull
     private BigDecimal precio;
     private String categoria;
-    private String genero;
 
     @ManyToOne(targetEntity = Proveedor.class)
     private Proveedor proveedor;
