@@ -3,6 +3,7 @@ package com.ramos.springboot_outlet.service.impl;
 import com.ramos.springboot_outlet.entities.DetalleVenta;
 import com.ramos.springboot_outlet.persistence.IDetalleVentaDAO;
 import com.ramos.springboot_outlet.service.IDetalleVentaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Service
 public class DetalleVentaServiceImpl implements IDetalleVentaService {
 
+    @Autowired
     private IDetalleVentaDAO service;
 
     @Override
