@@ -5,11 +5,11 @@ import com.ramos.springboot_outlet.entities.Venta;
 import com.ramos.springboot_outlet.service.IVenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,5 +62,50 @@ public class VentaController {
         return ResponseEntity.ok(ventas);
     }
 
-    public ResponseEntity<?>
+    @PostMapping("/guardar")
+    public ResponseEntity<?> save(@RequestBody VentaDTO ventaDTO) throws URISyntaxException {
+        LocalDate diaVenta2 = LocalDate.now();
+        if(ventaDTO.getNumeroVenta() == null){
+            return ResponseEntity.badRequest().build();
+        }
+
+        service.save(Venta.builder()
+                .numeroVenta(ventaDTO.getNumeroVenta())
+                .diaVenta(diaVenta2)
+                .total(ventaDTO.getTotal())
+                .metodoPago(ventaDTO.getMetodoPago())
+                .usuario(ventaDTO.getUsuario())
+                .cliente(ventaDTO.getCliente())
+                .detalle_venta(ventaDTO.getDetalle_venta())
+                .build());
+
+        return ResponseEntity.created(new URI("/api/venta/guardar")).build();
+    }
+
+    @PutMapping("/editar/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody VentaDTO ventaDTO){
+        Optional<Venta> ventaOptional = service.findById(id);
+
+        if (ventaOptional.isPresent()){
+            Venta venta = ventaOptional.get();
+
+            venta.setNumeroVenta(ventaDTO.getNumeroVenta());
+            venta.setTotal(ventaDTO.getTotal());
+            venta.setMetodoPago(ventaDTO.getMetodoPago());
+            venta.setUsuario(ventaDTO.getUsuario());
+
+            service.save(venta);
+
+            return ResponseEntity.ok("Venta actualizada");
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    public ResponseEntity<?> deleteById(@PathVariable Long id){
+        if (id != null){
+            service.deleteById(id);
+            return ResponseEntity.ok("Venta eliminada");
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

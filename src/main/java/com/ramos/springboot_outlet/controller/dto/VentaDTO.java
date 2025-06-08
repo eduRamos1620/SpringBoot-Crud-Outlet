@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +18,7 @@ import java.util.Date;
 public class VentaDTO {
     private Long id;
     private Long numeroVenta;
-    private Date diaVenta;
+    private LocalDate diaVenta;
     private BigDecimal total;
     private String metodoPago;
     private Usuario usuario;

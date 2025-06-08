@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+
 
 @Setter
 @Getter
@@ -21,7 +21,7 @@ public class Venta {
     private Long id;
     private Long numeroVenta;
     @Column(name = "dia_venta")
-    private Date diaVenta;
+    private LocalDate diaVenta;
     private BigDecimal total;
     @Column(name = "metodo_pago")
     private String metodoPago;
